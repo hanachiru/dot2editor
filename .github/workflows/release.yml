@@ -1,0 +1,147 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump-level:
+        type: choice
+        options: [major, minor, patch]
+        required: true
+        default: patch
+        description: "The level of version bump to apply"
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Read and bump version
+        id: read-version
+        env:
+          BUMP_LEVEL: ${{ github.event.inputs.bump-level }}
+        run: |
+          set -euo pipefail
+
+          version=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' Directory.Build.props | head -1)
+          if [ -z "${version}" ]; then
+            echo "::error::No <Version> found in Directory.Build.props"
+            exit 1
+          fi
+
+          IFS='.' read -ra tokens <<< "${version:-0.0.0}"
+          major="${tokens[0]}"
+          minor="${tokens[1]}"
+          patch="${tokens[2]}"
+          case "${BUMP_LEVEL}" in
+            major) major="$((major + 1))"; minor=0; patch=0 ;;
+            minor) minor="$((minor + 1))"; patch=0 ;;
+            patch) patch="$((patch + 1))" ;;
+          esac
+
+          new_version="${major}.${minor}.${patch}"
+          echo "previous=${version}" | tee -a "${GITHUB_OUTPUT}"
+          echo "version=${new_version}" | tee -a "${GITHUB_OUTPUT}"
+
+      - name: Update Directory.Build.props version
+        env:
+          VERSION: ${{ steps.read-version.outputs.version }}
+        run: |
+          set -euo pipefail
+          sed -i "s|<Version>.*</Version>|<Version>${VERSION}</Version>|" Directory.Build.props
+          grep -q "<Version>${VERSION}</Version>" Directory.Build.props
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Test
+        run: dotnet test --no-build -c Release
+
+      - name: Pack
+        run: dotnet pack --no-build -c Release -o artifacts
+
+      - name: Verify the packed tool installs and runs
+        env:
+          VERSION: ${{ steps.read-version.outputs.version }}
+        run: |
+          set -euo pipefail
+          dotnet tool install Dot2Editor.Cli --version "${VERSION}" --tool-path ./tools --add-source ./artifacts
+          installed=$(./tools/d2e --version)
+          if [ "${installed}" != "${VERSION}" ]; then
+            echo "::error::Packed tool reports ${installed}, expected ${VERSION}"
+            exit 1
+          fi
+          ./tools/d2e tests/Dot2Editor.Core.Tests/TestData/Comprehensive.DotSettings -q
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: nupkg
+          path: artifacts/*
+
+      - name: Commit and push the version bump
+        env:
+          VERSION: ${{ steps.read-version.outputs.version }}
+        run: |
+          set -euo pipefail
+          git config user.name '${{ steps.app-token.outputs.app-slug }}[bot]'
+          git config user.email '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'
+          git add Directory.Build.props
+          git commit -m "Update v${VERSION}"
+          git push
+
+
+      - name: Log in to nuget.org (OIDC → short-lived key)
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Publish to nuget.org
+        run: |
+          set -euo pipefail
+          # Symbol packages (.snupkg) are pushed automatically alongside each .nupkg.
+          dotnet nuget push "artifacts/*.nupkg" \
+            --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
+
+      - uses: release-drafter/release-drafter@v6
+        with:
+          publish: true
+          commitish: main
+          tag: v${{ steps.read-version.outputs.version }}
+          name: v${{ steps.read-version.outputs.version }}
+          version: ${{ steps.read-version.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

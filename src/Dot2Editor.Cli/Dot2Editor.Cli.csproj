@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>d2e</AssemblyName>
+    <RootNamespace>Dot2Editor.Cli</RootNamespace>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- Allow the tool to run on a newer installed runtime than net10.0 -->
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+  <!-- `dotnet tool install -g Dot2Editor.Cli` -->
+  <PropertyGroup>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>d2e</ToolCommandName>
+    <PackageId>Dot2Editor.Cli</PackageId>
+    <Description>CLI to convert JetBrains .DotSettings files (Rider / ReSharper) to .editorconfig.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Source generator: emits the argument parser, help and version handling. -->
+    <PackageReference Include="ConsoleAppFramework" Version="5.7.13" PrivateAssets="all"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dot2Editor.Core\Dot2Editor.Core.csproj"/>
+  </ItemGroup>
+
+</Project>

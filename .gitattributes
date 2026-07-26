@@ -1,0 +1,25 @@
+# Normalise line endings so diffs stay clean across platforms.
+* text=auto
+
+# Test data and the golden .editorconfig are compared byte for byte, so they must
+# not be rewritten on checkout.
+tests/Dot2Editor.Core.Tests/TestData/** text eol=lf
+
+# Sources and docs
+*.cs        text diff=csharp
+*.csproj    text
+*.props     text
+*.slnx      text
+*.json      text
+*.yml       text
+*.md        text
+
+# Windows-only files keep CRLF
+*.cmd       text eol=crlf
+*.bat       text eol=crlf
+*.ps1       text eol=crlf
+
+# Never touch binaries
+*.png       binary
+*.nupkg     binary
+*.snupkg    binary

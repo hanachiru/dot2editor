@@ -1,0 +1,256 @@
+<wpf:ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib"
+                        xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xml:space="preserve">
+
+	<!-- ==================================================================
+	     Every curated mapping (KnownMappings.ByPath) must appear below.
+	     KnownMappingsCoverageTests fails if one is missing.
+	     ================================================================== -->
+
+    <!-- Core EditorConfig properties -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_SIZE/@EntryValue">4</s:Int64>
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/TAB_WIDTH/@EntryValue">4</s:Int64>
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_STYLE/@EntryValue">Space</s:String>
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/WRAP_LIMIT/@EntryValue">120</s:Int64>
+
+    <!-- var vs explicit type -->
+    <s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForBuiltInTypes/@EntryValue">UseVar</s:String>
+    <s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForSimpleTypes/@EntryValue">UseExplicitType</s:String>
+    <s:String x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/ForOtherTypes/@EntryValue">UseVar</s:String>
+
+    <!-- int vs Int32 -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BUILT_IN_TYPE_REFERENCE_STYLE/@EntryValue">UseKeyword</s:String>
+    <s:String
+        x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BUILT_IN_TYPE_REFERENCE_STYLE_FOR_MEMBER_ACCESS/@EntryValue">UseType</s:String>
+
+    <!-- this. qualification: one flags value expands into four properties -->
+    <s:String
+        x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/ThisQualifier/INSTANCE_MEMBERS_QUALIFY_MEMBERS/@EntryValue">Field, Property</s:String>
+
+    <!-- braces -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_IFELSE/@EntryValue">RequiredForMultiline</s:String>
+
+    <!-- ==================================================================
+         Every LanguageProfile must appear below (resharper_* fallback).
+         ================================================================== -->
+
+    <!-- CSharpFormat: string, boolean, int and double values -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/ANONYMOUS_METHOD_DECLARATION_BRACES/@EntryValue">NEXT_LINE</s:String>
+    <s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/ALIGN_LINQ_QUERY/@EntryValue">True</s:Boolean>
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/BLANK_LINES_AROUND_TYPE/@EntryValue">1</s:Int64>
+    <s:Double
+        x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/CONTINUOUS_INDENT_MULTIPLIER/@EntryValue">1.5</s:Double>
+
+    <!-- CSharpCodeStyle: nested (UI-grouped) path uses only its last segment -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_WHILE/@EntryValue">RequiredForMultiline</s:String>
+    <s:String
+        x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/ThisQualifier/INSTANCE_MEMBERS_QUALIFY_DECLARED_IN/@EntryValue">0</s:String>
+
+    <!-- CSharpVarKeywordUsage: non-curated option falls back -->
+    <s:Boolean
+        x:Key="/Default/CodeStyle/CSharpVarKeywordUsage/PreferExplicitDiscardDeclaration/@EntryValue">True</s:Boolean>
+
+    <!-- CSharpUsing -->
+    <s:Boolean x:Key="/Default/CodeStyle/CSharpUsing/AddImportsToDeepestScope/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/CSharpUsing/AllowAlias/@EntryValue">False</s:Boolean>
+
+    <!-- XmlDocFormatter: shares [*.cs] but keeps its own resharper_xmldoc_ prefix,
+         so its INDENT_SIZE must NOT collide with the C# indent_size above. -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/XmlDocFormatter/INDENT_SIZE/@EntryValue">2</s:Int64>
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/XmlDocFormatter/IndentSubtags/@EntryValue">ZeroIndent</s:String>
+
+    <!-- VBFormat -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/VBFormat/INDENT_SIZE/@EntryValue">4</s:Int64>
+
+    <!-- CppFormatting -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CppFormatting/NAMESPACE_INDENTATION/@EntryValue">None</s:String>
+    <s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CppFormatting/INDENT_COMMENT/@EntryValue">False</s:Boolean>
+
+    <!-- HtmlFormatter -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/HtmlFormatter/INDENT_SIZE/@EntryValue">2</s:Int64>
+    <s:Int64
+        x:Key="/Default/CodeStyle/CodeFormatting/HtmlFormatter/MAX_BLANK_LINES_BETWEEN_TAGS/@EntryValue">1</s:Int64>
+
+    <!-- An option explicitly set to an empty value, which must survive as such -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/HtmlFormatter/TAGS_ARE_NOT_INDENTED_INSIDE/@EntryValue"></s:String>
+
+    <!-- CssFormatter -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/CssFormatter/INDENT_SIZE/@EntryValue">2</s:Int64>
+
+    <!-- XmlFormatter -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/XmlFormatter/INDENT_SIZE/@EntryValue">2</s:Int64>
+    <s:String
+        x:Key="/Default/CodeStyle/CodeFormatting/XmlFormatter/ATTRIBUTE_STYLE/@EntryValue">OnDifferentLines</s:String>
+
+    <!-- JavaScriptCodeFormatting, including a nested (UI-grouped) option -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/JavaScriptCodeFormatting/INDENT_SIZE/@EntryValue">2</s:Int64>
+    <s:Boolean
+        x:Key="/Default/CodeStyle/CodeFormatting/JavaScriptCodeFormatting/JavaScriptFormatOther/ALIGN_MULTIPLE_DECLARATION/@EntryValue">True</s:Boolean>
+
+    <!-- CppCodeStyle shares the C++ section with CppFormatting -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CppCodeStyle/BRACES_FOR_IFELSE/@EntryValue">RequiredForMultiline</s:String>
+
+    <!-- TypeScript options carry the JavaScript prefix, in their own section -->
+    <s:Boolean x:Key="/Default/CodeStyle/TypeScriptCodeStyle/NoImplicitAny/@EntryValue">True</s:Boolean>
+
+    <!-- RazorCodeStyle -->
+    <s:Boolean x:Key="/Default/CodeStyle/RazorCodeStyle/PreferQualifiedReference/@EntryValue">False</s:Boolean>
+
+    <!-- ProtobufCodeFormatting -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/ProtobufCodeFormatting/INDENT_SIZE/@EntryValue">2</s:Int64>
+
+    <!-- ResxFormatter -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/ResxFormatter/INDENT_SIZE/@EntryValue">2</s:Int64>
+
+    <!-- CommonFormatter: generalized options, no language qualifier, [*] section -->
+    <s:String
+        x:Key="/Default/CodeStyle/CodeFormatting/CommonFormatter/ALIGNMENT_TAB_FILL_STYLE/@EntryValue">USE_SPACES</s:String>
+    <s:String
+        x:Key="/Default/CodeStyle/CodeFormatting/CommonFormatter/ENFORCE_LINE_ENDING_STYLE/@EntryValue">CRLF</s:String>
+
+    <!-- A space option whose EditorConfig name differs from its .DotSettings key -->
+    <s:Boolean
+        x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/SPACE_AFTER_TYPECAST_PARENTHESES/@EntryValue">False</s:Boolean>
+
+
+    <!-- ==================================================================
+         Inspection severities: all five severity values, plus an escaped id
+         ("_002E" is "."), which must become resharper_<id>_highlighting.
+         ================================================================== -->
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=ArrangeThisQualifier/@EntryIndexedValue">ERROR</s:String>
+    <s:String x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=UnusedVariable/@EntryIndexedValue">WARNING</s:String>
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=InlineOutVariableDeclaration/@EntryIndexedValue">SUGGESTION</s:String>
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=BadIndent/@EntryIndexedValue">HINT</s:String>
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=SuggestUseVarKeywordEvident/@EntryIndexedValue">DO_NOT_SHOW</s:String>
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=UnusedMember_002EGlobal/@EntryIndexedValue">SUGGESTION</s:String>
+    <!-- A compiler warning ("_003A" is ":"), which Roslyn can express natively -->
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=CSharpWarnings_003A_003ACS0109/@EntryIndexedValue">DO_NOT_SHOW</s:String>
+
+    <!-- Non-severity entries in the same group are solution-wide analysis switches
+         and must still be skipped (seen in real Rider projects). -->
+    <s:Boolean x:Key="/Default/CodeInspection/Highlighting/IncludeWarningsInSwea/@EntryValue">True</s:Boolean>
+    <s:String x:Key="/Default/CodeInspection/Highlighting/ValueAnalysisMode/@EntryValue">DEFAULT</s:String>
+
+    <!-- A value that has no true/false equivalent: it must fall back to the
+         resharper_* property rather than being dropped. -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpCodeStyle/BRACES_FOR_FOREACH/@EntryValue">RequiredForMultilineStatement</s:String>
+
+    <!-- ==================================================================
+         Naming rules → dotnet_naming_rule / _symbols / _style.
+         ================================================================== -->
+
+    <!-- Predefined rules imply their symbol group from the key -->
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=Parameters/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=PrivateInstanceFields/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="_" Suffix="" Style="aaBb" /&gt;</s:String>
+    <!-- A required prefix, and an ExtraRule that EditorConfig cannot express -->
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=Interfaces/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="I" Suffix="" Style="AaBb"&gt;&lt;ExtraRule Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/Policy&gt;</s:String>
+    <!-- Inspect="False" becomes severity = none -->
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=LocalConstants/@EntryIndexedValue">&lt;Policy Inspect="False" Prefix="" Suffix="" Style="AA_BB" /&gt;</s:String>
+
+    <!-- A user rule describes its symbol group explicitly -->
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=a0b4bc4d_002Dd13b_002D4a37_002Db37e_002Dc9c6864e4302/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Static" AccessRightKinds="Public, Internal" Description="Public constants"&gt;&lt;ElementKinds&gt;&lt;Kind Name="CONSTANT_FIELD" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/Policy&gt;</s:String>
+    <!-- Mixed kinds: "readonly" must NOT become a required modifier -->
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=4a98fdf6_002D7d98_002D4f5a_002Dafeb_002Dea44ad98c70c/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Instance" AccessRightKinds="Protected" Description="Instance fields (protected)"&gt;&lt;ElementKinds&gt;&lt;Kind Name="FIELD" /&gt;&lt;Kind Name="READONLY_FIELD" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;</s:String>
+    <!-- Same symbols as the predefined PrivateInstanceFields rule above: a duplicate -->
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=15b5b1f1_002D457c_002D4ca6_002Db278_002D5615aedc07d3/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Instance" AccessRightKinds="Private" Description="Instance fields (private)"&gt;&lt;ElementKinds&gt;&lt;Kind Name="FIELD" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="_" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;</s:String>
+
+    <!-- VB.NET naming also maps, into its own section -->
+    <s:String x:Key="/Default/CodeStyle/Naming/VBNaming/PredefinedNamingRules/=Method/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;</s:String>
+
+    <!-- Local variables -->
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=Locals/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>
+    <!-- ReSharper's catch-all rule, which .NET naming conventions cannot express -->
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=Other/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;</s:String>
+    <!-- Unity serialised fields: the kind is dropped, the rest of the rule survives -->
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=b8a1c7e2_002D0000_002D0000_002D0000_002D000000000001/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Instance" AccessRightKinds="Public" Description="Unity fields"&gt;&lt;ElementKinds&gt;&lt;Kind Name="UNITY_SERIALISED_FIELD" /&gt;&lt;Kind Name="PROPERTY" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb" /&gt;&lt;/Policy&gt;</s:String>
+
+    <!-- Naming for languages without .NET naming conventions is skipped -->
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/JavaScriptNaming/UserRules/=JS_005FLOCAL_005FVARIABLE/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>
+
+    <!-- ==================================================================
+         Every skipped group must appear below, so the reasons stay accurate.
+         ================================================================== -->
+    <s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/ApplyAutoDetectedRules/@EntryValue">False</s:String>
+    <!-- JetBrains documents no EditorConfig properties for XAML, so it is skipped
+         rather than converted into invented resharper_xaml_* properties. -->
+    <s:Int64 x:Key="/Default/CodeStyle/CodeFormatting/XamlFormatter/WRAP_LIMIT/@EntryValue">200</s:Int64>
+    <s:Boolean x:Key="/Default/UserDictionary/Words/=dot2editor/@EntryIndexedValue">True</s:Boolean>
+    <s:Boolean
+        x:Key="/Default/Environment/SettingsMigration/IsMigratorApplied/=JetBrains_002EReSharper_002EPsi_002ECSharp_002ECodeStyle_002ESettingsUpgrade/@EntryIndexedValue">True</s:Boolean>
+    <s:String
+        x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=2D33CC2A5130274C9B3EE32B60B3433F/Shortcut/@EntryValue">ctor</s:String>
+    <s:String
+        x:Key="/Default/CodeStyle/CodeCleanup/Profiles/=Full_0020Cleanup/@EntryIndexedValue">&lt;data /&gt;</s:String>
+    <s:String x:Key="/Default/CodeStyle/CSharpFileLayoutPatterns/Pattern/@EntryValue">&lt;Patterns /&gt;</s:String>
+    <s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright (c) dot2editor</s:String>
+    <s:Boolean x:Key="/Default/CodeStyle/Generate/=Equality/@EntryIndexedValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/EncapsulateField/UseAutoProperty/@EntryValue">True</s:Boolean>
+    <s:String
+        x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=abc/@EntryIndexedValue">Generated</s:String>
+    <s:String
+        x:Key="/Default/CodeInspection/GeneratedCode/GeneratedFileMasks/=_002Ag_002Ecs/@EntryIndexedValue">*.g.cs</s:String>
+    <s:String
+        x:Key="/Default/CodeInspection/CodeAnnotations/NamespacesWithAnnotations/=JetBrains_002EAnnotations/@EntryIndexedValue">JetBrains.Annotations</s:String>
+    <s:String x:Key="/Default/CodeInspection/CSharpLanguageProject/LanguageLevel/@EntryValue">CSharp120</s:String>
+    <s:String x:Key="/Default/CodeEditing/NullCheckPatterns/EnabledPatterns/@EntryValue">throw</s:String>
+    <s:String x:Key="/Default/CustomTools/CustomToolsData/@EntryValue"></s:String>
+    <s:String x:Key="/Default/FilterSettingsManager/AttributeFilterXml/@EntryValue">&lt;data /&gt;</s:String>
+    <s:Boolean x:Key="/Default/ReSpeller/DontCheckInheritedMembers/@EntryValue">True</s:Boolean>
+
+    <!-- IDE state that Rider persists into .DotSettings, by far the bulkiest group
+         in real files -->
+    <s:Int64 x:Key="/Default/Housekeeping/VsActionManager/ShortcutSchemeName/@EntryValue">3</s:Int64>
+    <s:Int64 x:Key="/Default/TimelineLayout/MethodsPanelHeight/@EntryValue">200</s:Int64>
+    <s:String x:Key="/Default/SnapshotsStore/CurrentStore/@EntryValue">Local</s:String>
+    <s:Boolean x:Key="/Default/RiderDebugger/RiderRestoreDecompile/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/SymbolServers/RestoreDecompileSetting/@EntryValue">True</s:Boolean>
+    <s:String x:Key="/Default/GlobalFilterSettingsManager/AttributeFilterXml/@EntryValue">&lt;data /&gt;</s:String>
+    <s:String x:Key="/Default/CodeStyle/CSharpMemberOrderPattern/CustomPattern/@EntryValue">&lt;Pattern /&gt;</s:String>
+    <s:Boolean x:Key="/Default/CodeStyle/EditorConfig/ShowEditorConfigStatusBarIndicator/@EntryValue">True</s:Boolean>
+    <s:Boolean
+        x:Key="/Default/CodeStyle/IntroduceVariableUseVar/UseVarForIntroduceVariableRefactoring/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/LiveTemplatesUseVar/UseVar/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/CppSortIncludes/GroupByRootDirectory/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/CppIncludeDirective/SortIncludeDirectives/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/CppIntroduceType/UseAuto/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/CppPreferForwardDeclaration/Enabled/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CodeStyle/CppCVQualsPlacement/PutConstBeforeVolatile/@EntryValue">True</s:Boolean>
+    <s:String x:Key="/Default/CodeStyle/AgentSmith/CustomDictionary/CustomDictionaries/=en_002DUS/@EntryIndexedValue">words</s:String>
+    <s:String x:Key="/Default/CodeStyle/XamlStyler/AttributesTolerance/@EntryValue">2</s:String>
+    <s:String x:Key="/Default/CoverageSessionsPersistenceManagerSettings/SessionPersistentData/@EntryValue">&lt;data /&gt;</s:String>
+    <s:Boolean x:Key="/Default/dotCover/Filtering/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/Profilers/Common/ShowWelcome/@EntryValue">False</s:Boolean>
+    <s:Boolean x:Key="/Default/Profiling/Enabled/@EntryValue">False</s:Boolean>
+    <s:Boolean x:Key="/Default/Dpa/IsIssuesNotificationEnabled/@EntryValue">False</s:Boolean>
+    <s:String x:Key="/Default/Connection/XmlConnectionList/@EntryValue">&lt;data /&gt;</s:String>
+    <s:Boolean x:Key="/Default/TeamCityAddin/DotCoverIntegration/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/StyleCopOptions/AnalysisEnabled/@EntryValue">False</s:Boolean>
+    <s:Boolean x:Key="/Default/GrammarAndSpelling/GrammarChecking/Enabled/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/GeneralLinter/Enabled/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/InstalledDictionaries/UseBundled/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/HighlightingManager/Enabled/@EntryValue">True</s:Boolean>
+    <s:String x:Key="/Default/ReportingFeature/InitialDirectory/@EntryValue">reports</s:String>
+    <s:Boolean x:Key="/Default/OptionsGeneral/ShowTips/@EntryValue">False</s:Boolean>
+    <s:Int64 x:Key="/Default/WpfWindowSize/Width/@EntryValue">800</s:Int64>
+    <s:Boolean x:Key="/Default/SnapshotDilogManager/Remember/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CppUnrealEngine/IsUnrealEngineSolution/@EntryValue">True</s:Boolean>
+    <s:Boolean x:Key="/Default/CppCodeCompletion/AddParenthesis/@EntryValue">True</s:Boolean>
+
+    <!-- Unity ShaderLab -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/ShaderLabFormat/BraceStyle/@EntryValue">NextLine</s:String>
+    <!-- Rider's Unity plugin: no documented EditorConfig properties -->
+    <s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/UnityCSharpFormatting/ENFORCE_CUSTOM_HEADER_FORMATTING/@EntryValue">True</s:Boolean>
+
+</wpf:ResourceDictionary>

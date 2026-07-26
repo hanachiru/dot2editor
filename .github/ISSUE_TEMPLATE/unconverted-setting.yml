@@ -1,0 +1,52 @@
+name: Unconverted setting
+description: A .DotSettings entry was skipped, or converted to the wrong property
+title: "Unconverted setting: "
+labels: ["mapping"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks — this is the most useful kind of report for dot2editor, because it is
+        what decides which mappings get added next.
+
+        Run the converter over your own file first:
+
+        ```bash
+        d2e YourProject.sln.DotSettings --show-skipped
+        ```
+
+  - type: textarea
+    id: entries
+    attributes:
+      label: The .DotSettings entries
+      description: >
+        Paste the `skipped:` / `partial:` lines, or the raw XML entries. Please remove
+        anything private first — file paths and dictionary words often appear in these files.
+      render: text
+      placeholder: |
+        skipped: /Default/CodeStyle/CodeFormatting/CSharpFormat/SOME_OPTION/@EntryValue (no known mapping to an EditorConfig property)
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should it become?
+      description: >
+        The .editorconfig property you would expect, if you know it. A link to the
+        JetBrains or Microsoft documentation that states it is very welcome — mappings
+        are only added when they can be confirmed, never guessed.
+      placeholder: |
+        resharper_csharp_some_option = value
+        https://www.jetbrains.com/help/resharper/EditorConfig_Index.html
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: dot2editor version
+      description: Output of `d2e --version`.
+      placeholder: "0.1.0"
+    validations:
+      required: true

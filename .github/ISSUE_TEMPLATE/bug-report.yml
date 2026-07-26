@@ -1,0 +1,58 @@
+name: Bug report
+description: Something crashed, produced broken output, or damaged a file
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        For a setting that simply was not converted, please use the
+        **Unconverted setting** template instead.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Include the exact command you ran and its full output.
+      render: text
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Input
+      description: >
+        The smallest .DotSettings that reproduces it, and — if `--output` was involved —
+        the .editorconfig it was merged into. Please remove anything private.
+      render: xml
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: dot2editor version
+      description: Output of `d2e --version`.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
