@@ -7,6 +7,8 @@
 [![NuGet](https://img.shields.io/nuget/v/Dot2Editor.Core?label=Dot2Editor.Core)](https://www.nuget.org/packages/Dot2Editor.Core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+![dot2editor が .DotSettings を .editorconfig に変換する様子](images/about.png)
+
 > ⚠️ **このプロジェクトは開発中であり、正常に動作しない可能性があります。**
 
 JetBrains製品（Rider / ReSharper）の `.DotSettings` を `.editorconfig` に変換するCLIツールです。
