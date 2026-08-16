@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore -c Release
+
+      - name: Test
+        run: dotnet test --no-build -c Release --verbosity normal
+
+      - name: Pack
+        run: dotnet pack --no-build -c Release -o artifacts
+
+      - name: Smoke test the tool
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          dotnet tool install Dot2Editor.Cli --tool-path ./tools --add-source ./artifacts
+          ./tools/d2e --version
+          ./tools/d2e tests/Dot2Editor.Core.Tests/TestData/Comprehensive.DotSettings -q

@@ -1,0 +1,30 @@
+<wpf:ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib"
+                        xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xml:space="preserve">
+
+	<!-- Every entry here must be reported as skipped: none of them can be
+	     converted, not even to a resharper_* property. -->
+
+    <!-- Inspection severities are a closed set; an unknown value is not guessed at -->
+    <s:String
+        x:Key="/Default/CodeInspection/Highlighting/InspectionSeverities/=BadIndent/@EntryIndexedValue">MAYBE</s:String>
+
+    <!-- Keys that are not in the "/Default/.../@Entry*Value" shape -->
+    <s:String x:Key="/NotDefault/Whatever/@EntryValue">x</s:String>
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_SIZE">4</s:String>
+    <s:String x:Key="/Default/@EntryValue">x</s:String>
+
+    <!-- A known language group, but an indexed entry inside it -->
+    <s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/CustomRules/=Foo/@EntryIndexedValue">bar</s:String>
+
+    <!-- A settings group this tool knows nothing about -->
+    <s:Boolean x:Key="/Default/SomeFuturePlugin/Options/Enabled/@EntryValue">True</s:Boolean>
+
+    <!-- A naming rule whose only element kind has no EditorConfig equivalent -->
+    <s:String
+        x:Key="/Default/CodeStyle/Naming/CSharpNaming/UserRules/=5f0fdb63_002Dc892_002D4d2c_002D9324_002D15c80b22a7ef/@EntryIndexedValue">&lt;Policy&gt;&lt;Descriptor Staticness="Any" AccessRightKinds="Any" Description="Unity serialised"&gt;&lt;ElementKinds&gt;&lt;Kind Name="UNITY_SERIALISED_FIELD" /&gt;&lt;/ElementKinds&gt;&lt;/Descriptor&gt;&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;&lt;/Policy&gt;</s:String>
+
+    <!-- Elements without a key are ignored entirely -->
+    <s:String>orphan</s:String>
+
+</wpf:ResourceDictionary>

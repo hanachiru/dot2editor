@@ -1,0 +1,14 @@
+<Solution>
+    <Configurations>
+        <Platform Name="Any CPU"/>
+        <Platform Name="x64"/>
+        <Platform Name="x86"/>
+    </Configurations>
+    <Folder Name="/src/">
+        <Project Path="src/Dot2Editor.Cli/Dot2Editor.Cli.csproj"/>
+        <Project Path="src/Dot2Editor.Core/Dot2Editor.Core.csproj"/>
+    </Folder>
+    <Folder Name="/tests/">
+        <Project Path="tests/Dot2Editor.Core.Tests/Dot2Editor.Core.Tests.csproj"/>
+    </Folder>
+</Solution>

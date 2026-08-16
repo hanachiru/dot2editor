@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>Dot2Editor.Core</RootNamespace>
+    <PackageId>Dot2Editor.Core</PackageId>
+    <Description>I/O-free core library that converts JetBrains .DotSettings text to .editorconfig text. Usable from CLI, server, or Blazor WebAssembly.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Lets the test suite assert that every curated mapping is covered by test data. -->
+    <InternalsVisibleTo Include="Dot2Editor.Core.Tests"/>
+  </ItemGroup>
+
+</Project>

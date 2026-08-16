@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: JetBrains EditorConfig reference
+    url: https://www.jetbrains.com/help/resharper/EditorConfig_Index.html
+    about: Which EditorConfig properties ReSharper and Rider understand.
+  - name: .NET code-style naming rules
+    url: https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/naming-rules
+    about: How dotnet_naming_rule, _symbols and _style are defined.
