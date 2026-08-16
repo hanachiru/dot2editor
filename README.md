@@ -7,7 +7,7 @@ English | **[日本語](https://github.com/hanachiru/dot2editor/blob/main/README
 [![NuGet](https://img.shields.io/nuget/v/Dot2Editor.Core?label=Dot2Editor.Core)](https://www.nuget.org/packages/Dot2Editor.Core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/hanachiru/dot2editor/blob/main/LICENSE)
 
-![dot2editor converts a .DotSettings file into an .editorconfig](https://raw.githubusercontent.com/hanachiru/dot2editor/main/images/about.png)
+![dot2editor converts a .DotSettings file into an .editorconfig](images/about.png)
 
 > ⚠️ **This project is under development and may not work correctly.**
 
