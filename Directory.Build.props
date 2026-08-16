@@ -11,7 +11,7 @@
     </PropertyGroup>
     
     <PropertyGroup>
-        <Version>0.1.1</Version>
+        <Version>0.1.2</Version>
         <Authors>hanachiru</Authors>
         <PackageTags>editorconfig;dotsettings;resharper;rider;converter;formatting</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
