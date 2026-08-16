@@ -23,7 +23,7 @@ jobs:
       id-token: write
 
     steps:
-      - uses: actions/create-github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         id: app-token
         with:
           app-id: ${{ secrets.BOT_APP_ID }}
@@ -35,7 +35,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           token: ${{ steps.app-token.outputs.token }}
 
@@ -74,7 +74,7 @@ jobs:
           sed -i "s|<Version>.*</Version>|<Version>${VERSION}</Version>|" Directory.Build.props
           grep -q "<Version>${VERSION}</Version>" Directory.Build.props
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           global-json-file: global.json
 
@@ -104,7 +104,7 @@ jobs:
           ./tools/d2e tests/Dot2Editor.Core.Tests/TestData/Comprehensive.DotSettings -q
 
       - name: Upload packages
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nupkg
           path: artifacts/*
@@ -136,7 +136,7 @@ jobs:
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
 
-      - uses: release-drafter/release-drafter@v6
+      - uses: release-drafter/release-drafter@v7
         with:
           publish: true
           commitish: main
