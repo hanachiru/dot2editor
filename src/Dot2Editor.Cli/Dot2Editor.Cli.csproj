@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <!-- Source generator: emits the argument parser, help and version handling. -->
-    <PackageReference Include="ConsoleAppFramework" Version="5.7.13" PrivateAssets="all"/>
+    <PackageReference Include="ConsoleAppFramework" Version="5.8.0" PrivateAssets="all"/>
   </ItemGroup>
 
   <ItemGroup>
